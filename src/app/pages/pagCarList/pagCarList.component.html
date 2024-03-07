@@ -1,0 +1,59 @@
+<div class="card">
+  <div class="card-header">
+    LISTA DE AUTOS
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Filtro:</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Marca" [(ngModel)]="filter">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        FILTRADO POR: {{filter}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th>
+                <button class="btn btn-xs" 
+                  [ngClass]="{'btn-success': showImage, 'btn-warning': !showImage}"
+                  (click)="showImageFunction()">
+                  {{showImage? "Ocultar ": "Mostrar "}} imagen
+                </button>
+            </th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Año</th>
+            <th>Color</th>
+            <th>Kilómetros</th>
+            <th>Precio</th>
+            <th>Calificación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of carList">
+              <td>
+                  <img [src]="item.imgUrl" *ngIf="showImage" alt=""
+                  [style.width.px]="imageWidth"
+                  [style.height.px]="imageHeight"
+                  [style.margin.px]="imageMargin">
+              </td>
+              <td>{{item.brand | titlecase}}</td>
+              <td>{{item.model | titlecase}}</td>
+              <td [innerText]="item.year"></td>
+              <td>{{item.colour | titlecase}}</td>
+              <td>{{item.kilometers | number}}</td>
+              <td>{{item.price | currency}}</td>
+              <td><app-rating [rating]="item.rating" (actionPulse)="receive($event)"></app-rating></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

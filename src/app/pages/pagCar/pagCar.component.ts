@@ -9,16 +9,20 @@ import { CarService } from '../../services/car.service';
 })
 export class PagCarComponent implements OnInit {
 
-  @Input() id: number = 0;
+  @Input() id?: string;
 
-  car: Car | undefined;
+  car: any;
 
   constructor(private carservice: CarService) { 
     
   }
 
   ngOnInit() {
-    this.car = this.carservice.getCarById(this.id);
+    if (this.id)
+    {
+      this.car = this.carservice.getCarById(parseInt(this.id));
+    }
+    
   }
 
 }

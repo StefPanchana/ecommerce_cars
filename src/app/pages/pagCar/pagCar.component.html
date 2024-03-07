@@ -1,10 +1,69 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="card">
   <div class="card-header">
-    DETALLE DE AUTO: {{car?.brand}} {{car?.model}}
+    <h4>Detall del Auto: {{car?.id}}: {{car?.brand | titlecase}} {{car?.model | titlecase}}</h4>
   </div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="card">
+          <div class="card-body">
+            <ul class="list-group list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">Marca:</div>
+                </div>
+                <span class="" style="width: 100px;">{{car?.brand | titlecase}}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">Modelo:</div>
+                </div>
+                <span class="" style="width: 100px;">{{car?.model | titlecase}}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">Año:</div>
+                </div>
+                <span class="" style="width: 100px;">{{car?.year}}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">Kilómetros:</div>
+                </div>
+                <span class="" style="width: 100px;">{{car?.kilometers}} km</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">Precio:</div>
+                </div>
+                <span class="" style="width: 100px;">{{car?.price | currency}}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">Calificación:</div>
+                </div>
+                <span style="width: 100px;"><app-rating [rating]="car?.rating"></app-rating></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1" style="display: flex; flex-direction: row; align-items: end; padding: 0;">
+        <div class="" >
+          <button class="btn btn-primary" style="width: 112px;"><i class="fa fa-cart-plus"></i> Comprar</button>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <p>{{car?.imgUrl}}</p>
+          <img src={{car?.imgUrl}} alt="" style="width: 600px; height: 240px; object-fit: contain; padding: 5px;">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-secondary"><i class="fa fa-angle-left" aria-hidden="true"></i> Regreso</button>
   </div>
 </div>

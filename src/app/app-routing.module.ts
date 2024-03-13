@@ -4,6 +4,7 @@ import { PagHomeComponent } from './pages/pagHome/pagHome.component';
 import { PagCarListComponent } from './pages/pagCarList/pagCarList.component';
 import { PagNotFoundComponent } from './pages/pagNotFound/pagNotFound.component';
 import { PagCarComponent } from './pages/pagCar/pagCar.component';
+import { PagCarRegisterComponent } from './pages/pagCarRegister/pagCarRegister.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: "cars",
     component: PagCarListComponent
+  },
+  {
+    path: "car",
+    component: PagCarRegisterComponent
   },
   {
     path: "cars/:id",

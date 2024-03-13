@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Registro de Auto Nuevo</h2>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12">
+        <form [formGroup]="formCar">
+          <div class="mb-3 row">
+            <label for="staticCodigo" class="col-sm-2 col-form-label">Codigo:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="id" id="staticCodigo" formControlName="id">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticCodigo" class="col-sm-2 col-form-label">Marca:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="brand" id="staticCodigo" formControlName="brand">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticCodigo" class="col-sm-2 col-form-label">Modelo:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="model" id="staticCodigo" formControlName="model">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticCodigo" class="col-sm-2 col-form-label">Año:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="year" id="staticCodigo" formControlName="year">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticCodigo" class="col-sm-2 col-form-label">Color:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="colour" id="staticCodigo" formControlName="colour">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticCodigo" class="col-sm-2 col-form-label">Precio:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="price" id="staticCodigo" formControlName="price">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticCodigo" class="col-sm-2 col-form-label">Kilometros:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="kilometers" id="staticCodigo" formControlName="kilometers">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticCodigo" class="col-sm-2 col-form-label">Calificación:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="rating" id="staticCodigo" formControlName="rating">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn btn-info" (click)="saveCar()">GUARDAR</button>
+    </div>
+  </div>
+</div>

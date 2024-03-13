@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CarService } from '../../services/car.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-pagCarList',
@@ -9,7 +10,17 @@ import { CarService } from '../../services/car.service';
 export class PagCarListComponent implements OnInit {
 
   showImage: boolean = true;
-  filter: string = "";
+  private _filter: string = "";
+
+
+  get filter(){
+    return this._filter;
+  }
+
+  set filter(value: string){
+    this._filter = value;
+    this.queryCars();
+  }
 
   imageWidth = 120;
   imageHeight = 80;
@@ -23,11 +34,17 @@ export class PagCarListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.carList = this.carservice.getCars();
+    this.queryCars();
   }
 
   showImageFunction(){
     this.showImage = !this.showImage;
+  }
+
+  queryCars(){
+    this.carservice.getCars(this.filter).subscribe(data => {
+      this.carList = data;
+    });
   }
 
   receive(valueEmit: number){

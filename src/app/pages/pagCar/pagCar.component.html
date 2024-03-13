@@ -2,11 +2,21 @@
 
 <div class="card">
   <div class="card-header">
-    <h4>Detall del Auto: {{car?.id}}: {{car?.brand | titlecase}} {{car?.model | titlecase}}</h4>
+    <h4>Detalle del Auto: {{car?.id}}: {{car?.brand | titlecase}} {{car?.model | titlecase}}</h4>
   </div>
   <div class="card-body">
     <div class="row">
       <div class="col-sm-5">
+        <div class="card">
+          <img src={{car?.imgUrl}} alt="" style="width: 600px; height: 275px; object-fit: contain; padding: 5px;">
+        </div>
+      </div>
+      <div class="col-md-1" style="display: flex; flex-direction: row; align-items: end; padding: 0;">
+        <div class="" >
+          <button class="btn btn-primary" style="width: 112px;"><i class="fa fa-cart-plus"></i> Comprar</button>
+        </div>
+      </div>
+      <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
             <ul class="list-group list-group">
@@ -48,17 +58,6 @@
               </li>
             </ul>
           </div>
-        </div>
-      </div>
-      <div class="col-md-1" style="display: flex; flex-direction: row; align-items: end; padding: 0;">
-        <div class="" >
-          <button class="btn btn-primary" style="width: 112px;"><i class="fa fa-cart-plus"></i> Comprar</button>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="card">
-          <p>{{car?.imgUrl}}</p>
-          <img src={{car?.imgUrl}} alt="" style="width: 600px; height: 240px; object-fit: contain; padding: 5px;">
         </div>
       </div>
     </div>

@@ -34,7 +34,13 @@ export class PagCarListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.queryCars();
+
+    this.carservice.getAllCars().subscribe( data => {
+      console.log(data);
+      this.carList = data;
+    })
+
+    //this.queryCars();
   }
 
   showImageFunction(){

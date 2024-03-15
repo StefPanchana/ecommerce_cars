@@ -13,7 +13,7 @@ import { PagCarRegisterComponent } from "./pagCarRegister/pagCarRegister.compone
     FormsModule,
     UtilsModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
 ],
   declarations:[
     PagCarListComponent,
@@ -22,6 +22,7 @@ import { PagCarRegisterComponent } from "./pagCarRegister/pagCarRegister.compone
 ],
   exports: [
     PagCarListComponent,
+    PagCarComponent,
     PagCarRegisterComponent
 ]  
 })

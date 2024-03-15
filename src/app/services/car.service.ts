@@ -1,13 +1,41 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../dto/car';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
 
-constructor() { }
+baseUrl = "http://www.epico.gob.ec/vehiculo/public/api/";
+constructor(private http: HttpClient) { 
+
+}
+
+getAllCars():Observable<Car[]> {
+  return this.http.get<ResponseForHttp>(this.baseUrl+"vehiculos/").pipe(map(datatry => {
+    console.log(datatry.data);
+
+    let listCar:Array<Car> = [];
+
+      datatry.data.forEach(element => {
+        listCar.push({
+          id: element.id, 
+          brand: element.marca, 
+          model: element.modelo,
+          year: element.anio,
+          colour: '',
+          kilometers: 0,
+          price: 0,
+          rating: element.calificacion,
+          imgUrl: element.foto
+        })
+      });
+      return listCar;
+
+  }));
+}
 
 getCars(filter: any): Observable<Array<Car>>{
   const listener: Observable<Array<Car>> = new Observable(listening => {
@@ -35,4 +63,10 @@ private carList: Array<Car> = [
   {id: 5, brand: "kia", model: "niro", year: 2023, colour: "azul", price: 30000, kilometers: 8000, rating: 4, imgUrl: "assets/carsImages/niro.jpg" }
 ]
 
+}
+
+export interface ResponseForHttp {
+  codigo: string;
+  mensaje: string;
+  data: any;
 }

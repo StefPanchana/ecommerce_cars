@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../../dto/car';
 import { CarService } from '../../services/car.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pagCarRegister',
@@ -16,7 +17,7 @@ export class PagCarRegisterComponent implements OnInit {
     private formBuilder: FormBuilder) {
   
     this.formCar = this.formBuilder.group({
-      "id": [],
+      "id": ['', [Validators.required, ValidateIdCar()]],
       "brand": [],
       "model": [],
       "year": [],
@@ -28,6 +29,7 @@ export class PagCarRegisterComponent implements OnInit {
    }
 
   ngOnInit() {
+
   }
 
   saveCar()
@@ -35,8 +37,28 @@ export class PagCarRegisterComponent implements OnInit {
     let car:Car = {...this.formCar.value};
     this.carService.addCar(car);
 
-    console.log("Grabado con exito");
-    console.log('formulario', this.formCar.value);
+    if (this.formCar.valid)
+    {
+      Swal.fire({
+        title: "Mensaje",
+        text: "Se grabo con exito",
+        icon: 'info'
+      })
+    }
+    
   }
+}
 
+export function ValidateIdCar(): ValidatorFn
+{
+  return (control: AbstractControl) : ValidationErrors | null => {
+    const code = /^\d{4}$/;
+    
+    if (code.test(control.value))
+    {
+      return null;
+    }
+    
+    return {'codeValidate': true};
+  }
 }

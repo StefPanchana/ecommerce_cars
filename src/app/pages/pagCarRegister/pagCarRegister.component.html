@@ -10,6 +10,8 @@
             <label for="staticCodigo" class="col-sm-2 col-form-label">Codigo:</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="id" id="staticCodigo" formControlName="id">
+              <div class="text-danger" *ngIf="formCar.controls['id'].errors?.['required']">Valor Requerido</div>
+              <div class="text-danger" *ngIf="formCar.controls['id'].errors?.['codeValidate']">Valor Numerico Requerido</div>
             </div>
           </div>
           <div class="mb-3 row">

@@ -27,7 +27,7 @@
           <thead>
             <tr>
               <th>
-                <button class="btn btn-xs" 
+                <button class="btn btn-xs"
                   [ngClass]="{'btn-success': showImage, 'btn-warning': !showImage}"
                   (click)="showImageFunction()">
                   {{showImage? "Ocultar ": "Mostrar "}} imagen
@@ -51,7 +51,7 @@
                   [style.height.px]="imageHeight"
                   [style.margin.px]="imageMargin">
               </td>
-              <td><a [routerLink]="['/cars/' + item.id]">{{item.id}}</a></td>
+              <td><a [routerLink]="['/cars/' + item.code]">{{item.code}}</a></td>
               <td>{{item.brand | titlecase}}</td>
               <td>{{item.model | titlecase}}</td>
               <td [innerText]="item.year"></td>

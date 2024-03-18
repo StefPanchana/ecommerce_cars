@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Car } from '../../dto/car';
 import { CarService } from '../../services/car.service';
+import {NavigationStart, Router} from "@angular/router";
 
 @Component({
   selector: 'app-pagCar',
@@ -13,16 +14,18 @@ export class PagCarComponent implements OnInit {
 
   car: any;
 
-  constructor(private carservice: CarService) { 
-    
+  constructor(private carservice: CarService) {
+
   }
 
   ngOnInit() {
     if (this.id)
     {
-      this.car = this.carservice.getCarById(parseInt(this.id));
-    }
-    
-  }
+      // Busqueda de Auto por ID
+      // this.car = this.carservice.getCarById(parseInt(this.id));
 
+      // Busqueda de Auto por Codigo
+      this.car = this.carservice.getCarByCode(this.id);
+    }
+  }
 }

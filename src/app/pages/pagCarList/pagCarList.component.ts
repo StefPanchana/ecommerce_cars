@@ -28,19 +28,21 @@ export class PagCarListComponent implements OnInit {
 
   @Input() value: string = '';
   carList:Array<any> = [];
-  
-  constructor(private carservice: CarService) { 
-    
+
+  constructor(private carservice: CarService) {
+
   }
 
   ngOnInit() {
 
+    // Para usar con data del API
     this.carservice.getAllCars().subscribe( data => {
       console.log(data);
       this.carList = data;
     })
 
-    //this.queryCars();
+    // Para usar con data local del proyecto
+    // this.queryCars();
   }
 
   showImageFunction(){

@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class CarService {
 
 baseUrl = "http://www.epico.gob.ec/vehiculo/public/api/";
-constructor(private http: HttpClient) { 
+constructor(private http: HttpClient) {
 
 }
 
@@ -18,22 +18,26 @@ getAllCars():Observable<Car[]> {
     console.log(datatry.data);
 
     let listCar:Array<Car> = [];
+    datatry.data.forEach(element => {
+      listCar.push({
+        id: element.id,
+        code: element.codigo,
+        brand: element.marca,
+        model: element.modelo,
+        year: element.anio,
+        colour: '',
+        kilometers: 0,
+        price: 0,
+        rating: element.calificacion,
+        imgUrl: element.foto
+      })
+    });
 
-      datatry.data.forEach(element => {
-        listCar.push({
-          id: element.id, 
-          brand: element.marca, 
-          model: element.modelo,
-          year: element.anio,
-          colour: '',
-          kilometers: 0,
-          price: 0,
-          rating: element.calificacion,
-          imgUrl: element.foto
-        })
-      });
-      return listCar;
+    // Actualizo la informacion de la lista de autos
+    this.carList = listCar;
 
+    // Retorno la lista de autos actualizada
+    return this.carList;
   }));
 }
 
@@ -51,18 +55,24 @@ getCarById(id:number){
   return this.carList.find(idcar => idcar.id === id);
 }
 
+getCarByCode(code: string)
+{
+  return this.carList.find(
+    codeCar => codeCar.code === code
+  );
+}
+
 addCar(car: Car){
   this.carList.push(car);
 }
 
 private carList: Array<Car> = [
-  {id: 1, brand: "kia", model: "stonic", year: 2023, colour: "azul", price: 20000, kilometers: 10000, rating: 5, imgUrl: "assets/carsImages/stonic.webp" },
-  {id: 2, brand: "suzuki", model: "scross", year: 2023, colour: "azul", price: 25000, kilometers: 15000, rating: 4, imgUrl: "assets/carsImages/scross.jpg" },
-  {id: 3, brand: "opel", model: "corsa", year: 2023, colour: "azul", price: 19000, kilometers: 10000, rating: 5, imgUrl: "assets/carsImages/corsa.jpg" },
-  {id: 4, brand: "toyota", model: "cross", year: 2023, colour: "azul", price: 29000, kilometers: 10000, rating: 5, imgUrl: "assets/carsImages/cross.webp" },
-  {id: 5, brand: "kia", model: "niro", year: 2023, colour: "azul", price: 30000, kilometers: 8000, rating: 4, imgUrl: "assets/carsImages/niro.jpg" }
+  {id: 1, code: "AAA001", brand: "kia", model: "stonic", year: 2023, colour: "azul", price: 20000, kilometers: 10000, rating: 5, imgUrl: "assets/carsImages/stonic.webp" },
+  {id: 2, code: "AAA002", brand: "suzuki", model: "scross", year: 2023, colour: "azul", price: 25000, kilometers: 15000, rating: 4, imgUrl: "assets/carsImages/scross.jpg" },
+  {id: 3, code: "AAA003", brand: "opel", model: "corsa", year: 2023, colour: "azul", price: 19000, kilometers: 10000, rating: 5, imgUrl: "assets/carsImages/corsa.jpg" },
+  {id: 4, code: "AAA004", brand: "toyota", model: "cross", year: 2023, colour: "azul", price: 29000, kilometers: 10000, rating: 5, imgUrl: "assets/carsImages/cross.webp" },
+  {id: 5, code: "AAA005", brand: "kia", model: "niro", year: 2023, colour: "azul", price: 30000, kilometers: 8000, rating: 4, imgUrl: "assets/carsImages/niro.jpg" }
 ]
-
 }
 
 export interface ResponseForHttp {

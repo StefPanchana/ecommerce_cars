@@ -6,6 +6,7 @@ import { UtilsModule } from "../utils/utilsModule";
 import { PagCarComponent } from "./pagCar/pagCar.component";
 import { RouterModule } from "@angular/router";
 import { PagCarRegisterComponent } from "./pagCarRegister/pagCarRegister.component";
+import {PagNewClientComponent} from "./pagNewClient/pagNewClient.component";
 
 @NgModule({
   imports: [
@@ -18,13 +19,15 @@ import { PagCarRegisterComponent } from "./pagCarRegister/pagCarRegister.compone
   declarations:[
     PagCarListComponent,
     PagCarComponent,
-    PagCarRegisterComponent
+    PagCarRegisterComponent,
+    PagNewClientComponent
 ],
   exports: [
     PagCarListComponent,
     PagCarComponent,
-    PagCarRegisterComponent
-]  
+    PagCarRegisterComponent,
+    PagNewClientComponent
+]
 })
 export class pagModule{
 

@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <div class="col-md-12">
+        <h3>{{titlePag}}</h3>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <form [formGroup]="formClient">
+            <div class="mb-3 row">
+              <label for="staticName" class="col-sm-2 col-form-label">Nombre:</label>
+              <div>
+                <input type="text" class="form-control" name="name" id="staticName" formControlName="name">
+              </div>
+            </div>
+            <div>
+              <label for="staticPass" class="col-sm-2 col-form-label">Password:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="password" id="staticPass" formControlName="password">
+              </div>
+            </div>
+            <div class="mb-3 row"></div>
+            <div class="mb-2 row">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" [(ngModel)]="stateContact" id="flexCheckDefault" (click)="changeStateContact()">
+                <label class="form-check-label" for="flexCheckDefault">¿Desea Contacto?</label>
+              </div>
+            </div>
+            <div *ngIf="stateContact">
+              <div>
+                <label for="staticEmail" class="col-sm-4 col-form-label">Dirección de correo electrónico:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="email" id="staticEmail" formControlName="email">
+                </div>
+              </div>
+              <div>
+                <label for="staticPhone" class="col-sm-2 col-form-label">Teléfono:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="phone" id="staticPhone" formControlName="phone">
+                </div>
+              </div>
+            </div>
+            <div class="mb-3 row"></div>
+            <div class="mb-3-row">
+              <button class="btn btn-primary" (click)="recordClient()"> Registrar Cliente
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer" style="display: flex; flex-direction: row; justify-content: center; align-items: center">
+      <button class="btn btn-outline-secondary"><a [routerLink]="['/home']" style="text-decoration: none; color: black"> Inicio </a>
+      </button>
+    </div>
+  </div>
+</div>

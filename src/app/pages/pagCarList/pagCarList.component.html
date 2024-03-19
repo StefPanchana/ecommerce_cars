@@ -41,6 +41,7 @@
             <th>Kilómetros</th>
             <th>Precio</th>
             <th>Calificación</th>
+            <th>Opciones</th>
             </tr>
           </thead>
           <tbody>
@@ -59,6 +60,12 @@
               <td>{{item.kilometers | number}}</td>
               <td>{{item.price | currency}}</td>
               <td><app-rating [rating]="item.rating" (actionPulse)="receive($event)"></app-rating></td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Basic Example">
+                  <button type="button" class="btn btn-info" (click)="editCarSelected()">Edit</button>
+                  <button type="button" class="btn btn-warning" (click)="deleteCarSelected()">Delete</button>
+                </div>
+              </td>
           </tr>
           </tbody>
         </table>

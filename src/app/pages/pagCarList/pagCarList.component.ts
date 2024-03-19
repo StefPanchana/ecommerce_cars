@@ -58,4 +58,11 @@ export class PagCarListComponent implements OnInit {
   receive(valueEmit: number){
     console.log("Valor del pulso: ", valueEmit);
   }
+
+  deleteCarSelected() {
+  }
+  
+  editCarSelected() {
+  }
+    
 }

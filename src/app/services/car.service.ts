@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../dto/car';
 import { Observable, map } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +66,23 @@ addCar(car: Car){
   this.carList.push(car);
 }
 
+insertCar(car: Car){
+  let httpOptions = {
+    headers: new HttpHeaders({'Content-Type':'application/json'})
+  };
+
+  let newCar;
+  newCar.id = car.id;
+  newCar.codigo = car.code;
+  newCar.marca = car.brand;
+  newCar.modelo = car.model;
+  newCar.anio = car.year;
+  newCar.calificacion = car.rating;
+  newCar.foto = car.imgUrl;
+
+  return this.http.post<ResponseForHttp>(this.baseUrl+"vehiculo/", newCar, httpOptions);
+}
+
 private carList: Array<Car> = [
   {id: 1, code: "AAA001", brand: "kia", model: "stonic", year: 2023, colour: "azul", price: 20000, kilometers: 10000, rating: 5, imgUrl: "assets/carsImages/stonic.webp" },
   {id: 2, code: "AAA002", brand: "suzuki", model: "scross", year: 2023, colour: "azul", price: 25000, kilometers: 15000, rating: 4, imgUrl: "assets/carsImages/scross.jpg" },
@@ -79,4 +96,14 @@ export interface ResponseForHttp {
   codigo: string;
   mensaje: string;
   data: any;
+}
+
+export interface vehiculo {
+  id: number;
+  codigo: string;
+  marca: string;
+  modelo: string;
+  anio: number;
+  calificacion: number;
+  foto: string;
 }

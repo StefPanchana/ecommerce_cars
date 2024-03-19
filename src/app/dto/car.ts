@@ -22,6 +22,4 @@ export class Car {
         this.rating = rating;
         this.imgUrl = imgUrl;
     }
-
-
 }

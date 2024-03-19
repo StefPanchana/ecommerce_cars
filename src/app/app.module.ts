@@ -18,7 +18,7 @@ import { UserInterceptorService } from './interceptors/userInterceptor.service';
     HttpClientModule
   ],
   providers: [
-/*     { provide: HTTP_INTERCEPTORS, useClass: UserInterceptorService, multi: true } */
+     // { provide: HTTP_INTERCEPTORS, useClass: UserInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

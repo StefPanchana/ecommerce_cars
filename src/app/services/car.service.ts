@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../dto/car';
-import { Observable, map } from 'rxjs';
+import {Observable, map, pipe} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Vehiculo} from "../dto/vehiculo";
+import Swal from "sweetalert2";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class CarService {
 
 baseUrl = "http://www.epico.gob.ec/vehiculo/public/api/";
+
 constructor(private http: HttpClient) {
 
 }
@@ -26,8 +29,8 @@ getAllCars():Observable<Car[]> {
         model: element.modelo,
         year: element.anio,
         colour: '',
-        kilometers: 0,
-        price: 0,
+        kilometers: element.kilometraje,
+        price: element.precio,
         rating: element.calificacion,
         imgUrl: element.foto
       })
@@ -71,16 +74,28 @@ insertCar(car: Car){
     headers: new HttpHeaders({'Content-Type':'application/json'})
   };
 
-  let newCar;
-  newCar.id = car.id;
-  newCar.codigo = car.code;
-  newCar.marca = car.brand;
-  newCar.modelo = car.model;
-  newCar.anio = car.year;
-  newCar.calificacion = car.rating;
-  newCar.foto = car.imgUrl;
+  let newCar: Vehiculo = {
+    codigo: car.code,
+    marca: car.brand,
+    modelo: car.model,
+    foto: car.imgUrl,
+    anio: car.year,
+    precio: car.price,
+    calificacion: car.rating,
+    kilometraje: car.kilometers,
+  };
 
   return this.http.post<ResponseForHttp>(this.baseUrl+"vehiculo/", newCar, httpOptions);
+}
+
+findCar(id: string)
+{
+  return this.http.get<ResponseForHttp>(this.baseUrl+"vehiculo/"+id);
+}
+
+deleteCar(id: string)
+{
+  return this.http.delete<ResponseForHttp>(this.baseUrl+"vehiculo/"+id);
 }
 
 private carList: Array<Car> = [
@@ -96,14 +111,4 @@ export interface ResponseForHttp {
   codigo: string;
   mensaje: string;
   data: any;
-}
-
-export interface vehiculo {
-  id: number;
-  codigo: string;
-  marca: string;
-  modelo: string;
-  anio: number;
-  calificacion: number;
-  foto: string;
 }

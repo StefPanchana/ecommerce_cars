@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CarService } from '../../services/car.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-pagCarList',
@@ -29,7 +30,8 @@ export class PagCarListComponent implements OnInit {
   @Input() value: string = '';
   carList:Array<any> = [];
 
-  constructor(private carservice: CarService) {
+  constructor(private carservice: CarService,
+              private router: Router) {
 
   }
 
@@ -61,8 +63,10 @@ export class PagCarListComponent implements OnInit {
 
   deleteCarSelected() {
   }
-  
+
   editCarSelected() {
+    // Activar ruta del listado de autos
+    this.router.navigate(['/car/', { id: 'A0007' }]);
   }
-    
+
 }

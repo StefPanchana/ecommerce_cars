@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Car } from '../../dto/car';
 import { CarService } from '../../services/car.service';
 import {NavigationStart, Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-pagCar',
@@ -14,7 +15,7 @@ export class PagCarComponent implements OnInit {
 
   car: any;
 
-  constructor(private carservice: CarService) {
+  constructor(private carService: CarService) {
 
   }
 
@@ -25,7 +26,38 @@ export class PagCarComponent implements OnInit {
       // this.car = this.carservice.getCarById(parseInt(this.id));
 
       // Busqueda de Auto por Codigo
-      this.car = this.carservice.getCarByCode(this.id);
+      // this.car = this.carservice.findCar(this.id);
+
+      this.carService.findCar(this.id).subscribe(info => {
+
+        console.log(info.mensaje + info.data);
+        let carFindout:Car;
+
+        if (parseInt(info.codigo) === 1)
+        {
+          carFindout = {
+            id: info.data.id,
+            code: info.data.codigo,
+            brand: info.data.marca,
+            model: info.data.modelo,
+            year: info.data.anio,
+            colour: '',
+            kilometers: info.data.kilometraje,
+            price: info.data.precio,
+            rating: info.data.calificacion,
+            imgUrl: info.data.foto
+          }
+          this.car = carFindout;
+        }
+        else if (parseInt(info.codigo) !== 1){
+          Swal.fire({
+            title: "Mensaje",
+            text: "No existe el registro consultado",
+            icon: 'error'
+          })
+        }
+
+      });
     }
   }
 }

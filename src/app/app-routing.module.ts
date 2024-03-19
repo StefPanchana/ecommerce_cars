@@ -21,6 +21,10 @@ const routes: Routes = [
     component: PagCarRegisterComponent
   },
   {
+    path: "car/:id",
+    component: PagCarRegisterComponent
+  },
+  {
     path: "cars/:id",
     component: PagCarComponent
   },

@@ -25,32 +25,6 @@ getAllCars(filter?: string, rows?: number, page?:number):Observable<ResponseForH
   body = page ? body.set('page', page): body;
 
   return this.http.get<ResponseForHttp>(this.baseUrl+"vehiculos/", {params: body});
-
-  //   .pipe(map(datatry => {
-  //   console.log(datatry.data);
-  //
-  //   // let listCar:Array<Car> = [];
-  //   // datatry.data.forEach(element => {
-  //   //   listCar.push({
-  //   //     id: element.id,
-  //   //     code: element.codigo,
-  //   //     brand: element.marca,
-  //   //     model: element.modelo,
-  //   //     year: element.anio,
-  //   //     colour: '',
-  //   //     kilometers: element.kilometraje,
-  //   //     price: element.precio,
-  //   //     rating: element.calificacion,
-  //   //     imgUrl: element.foto
-  //   //   })
-  //   // });
-  //
-  //   // // Actualizo la informacion de la lista de autos
-  //   // this.carList = listCar;
-  //   //
-  //   // // Retorno la lista de autos actualizada
-  //   // return this.carList;
-  // }));
 }
 
 getCars(filter: any): Observable<Array<Car>>{

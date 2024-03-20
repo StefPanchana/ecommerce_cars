@@ -7,6 +7,8 @@ import { PagCarComponent } from "./pagCar/pagCar.component";
 import { RouterModule } from "@angular/router";
 import { PagCarRegisterComponent } from "./pagCarRegister/pagCarRegister.component";
 import {PagNewClientComponent} from "./pagNewClient/pagNewClient.component";
+import { PagClientListComponent } from "./pagClientList/pagClientList.component";
+import {PagClientComponent} from "./pagClient/pagClient.component";
 
 @NgModule({
   imports: [
@@ -20,13 +22,17 @@ import {PagNewClientComponent} from "./pagNewClient/pagNewClient.component";
     PagCarListComponent,
     PagCarComponent,
     PagCarRegisterComponent,
-    PagNewClientComponent
+    PagNewClientComponent,
+    PagClientListComponent,
+    PagClientComponent
 ],
   exports: [
     PagCarListComponent,
     PagCarComponent,
     PagCarRegisterComponent,
-    PagNewClientComponent
+    PagNewClientComponent,
+    PagClientListComponent,
+    PagClientComponent
 ]
 })
 export class pagModule{

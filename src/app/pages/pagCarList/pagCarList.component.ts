@@ -12,7 +12,7 @@ import {Car} from "../../dto/car";
 })
 export class PagCarListComponent implements OnInit {
 
-  showImage: boolean = true;
+  showImage: boolean = false;
   private _filter: string = "";
   public rows: number = 0;
   public pages: number = 0;

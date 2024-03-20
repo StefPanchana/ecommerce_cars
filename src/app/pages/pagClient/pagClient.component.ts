@@ -24,7 +24,8 @@ export class PagClientComponent implements OnInit {
       "name": ['', Validators.required],
       "lastname": ['', Validators.required],
       "phonenumber": [],
-      "email": []
+      "email": [],
+      "password": []
     });
   }
 
@@ -79,6 +80,13 @@ export class PagClientComponent implements OnInit {
             })
           }
         });
+    }
+    else {
+      Swal.fire({
+        title: "Mensaje",
+        text: "Ingrese todos los campos requeridos para continuar!",
+        icon: 'error'
+      })
     }
   }
 

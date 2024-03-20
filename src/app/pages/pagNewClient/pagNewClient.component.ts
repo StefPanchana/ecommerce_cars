@@ -58,15 +58,20 @@ export class PagNewClientComponent implements OnInit {
           {
             Swal.fire({
               title: "Mensaje",
-              text: "Se grabo nuevo cliente con exito" + info.mensaje,
-              icon: 'info'
+              text: "No se realizo correctamente el registro del nuevo cliente!" + info.mensaje,
+              icon: 'error'
             })
           }
       });
     }
-
-    // Activar ruta del listado de autos
-    this.router.navigate(['/home']);
+    else
+    {
+      Swal.fire({
+        title: "Mensaje",
+        text: "Ingrese todos los campos requeridos para continuar!",
+        icon: 'error'
+      })
+    }
   }
 
   changeStateContact() {

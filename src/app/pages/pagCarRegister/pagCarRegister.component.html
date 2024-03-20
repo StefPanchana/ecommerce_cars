@@ -11,43 +11,48 @@
             <div class="col-sm-10">
               <input type="text" class="form-control" name="code" id="staticCodigo" formControlName="code">
               <div class="text-danger" *ngIf="formCar.controls['code'].errors?.['required']">Valor Requerido</div>
-              <div class="text-danger" *ngIf="formCar.controls['code'].errors?.['codeValidate']">Valor Numerico Requerido</div>
             </div>
           </div>
           <div class="mb-3 row">
             <label for="staticCodigo" class="col-sm-2 col-form-label">Marca:</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="brand" id="staticCodigo" formControlName="brand">
+              <div class="text-danger" *ngIf="formCar.controls['brand'].errors?.['required']">Valor Requerido</div>
             </div>
           </div>
           <div class="mb-3 row">
             <label for="staticCodigo" class="col-sm-2 col-form-label">Modelo:</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="model" id="staticCodigo" formControlName="model">
+              <div class="text-danger" *ngIf="formCar.controls['model'].errors?.['required']">Valor Requerido</div>
             </div>
           </div>
           <div class="mb-3 row">
             <label for="staticCodigo" class="col-sm-2 col-form-label">Año:</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="year" id="staticCodigo" formControlName="year">
+              <div class="text-danger" *ngIf="formCar.controls['year'].errors?.['required']">Valor Requerido</div>
             </div>
           </div>
           <div class="mb-3 row">
             <label for="staticCodigo" class="col-sm-2 col-form-label">Precio:</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="price" id="staticCodigo" formControlName="price">
+              <div class="text-danger" *ngIf="formCar.controls['price'].errors?.['required']">Valor Requerido</div>
             </div>
           </div>
           <div class="mb-3 row">
             <label for="staticCodigo" class="col-sm-2 col-form-label">Kilometros:</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="kilometers" id="staticCodigo" formControlName="kilometers">
+              <div class="text-danger" *ngIf="formCar.controls['kilometers'].errors?.['required']">Valor Requerido</div>
             </div>
           </div>
           <div class="mb-3 row">
             <label for="staticCodigo" class="col-sm-2 col-form-label">Calificación:</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="rating" id="staticCodigo" formControlName="rating">
+              <div class="text-danger" *ngIf="formCar.controls['rating'].errors?.['required']">Valor Requerido</div>
             </div>
           </div>
           <div class="mb-3 row">

@@ -10,12 +10,14 @@
             <label for="staticCodigo" class="col-sm-2 col-form-label">Nombre:</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="name" id="staticCodigo" formControlName="name">
+              <div class="text-danger" *ngIf="formClient.controls['name'].errors?.['required']">Valor Requerido</div>
             </div>
           </div>
           <div class="mb-3 row">
             <label for="staticCodigo" class="col-sm-2 col-form-label">Apellido:</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="lastname" id="staticCodigo" formControlName="lastname">
+              <div class="text-danger" *ngIf="formClient.controls['lastname'].errors?.['required']">Valor Requerido</div>
             </div>
           </div>
           <div class="mb-3 row">

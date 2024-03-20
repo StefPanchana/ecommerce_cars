@@ -22,13 +22,13 @@ export class PagCarRegisterComponent implements OnInit {
     private route: Router) {
 
     this.formCar = this.formBuilder.group({
-      "code": ['', []],
-      "brand": [],
-      "model": [],
-      "year": [],
-      "price": [],
-      "kilometers": [],
-      "rating": [],
+      "code": ['', Validators.required],
+      "brand": ['', Validators.required],
+      "model": ['', Validators.required],
+      "year": ['', Validators.required],
+      "price": ['', Validators.required],
+      "kilometers": ['', Validators.required],
+      "rating": ['', Validators.required],
       "imgUrl": []
     });
    }
@@ -132,19 +132,27 @@ export class PagCarRegisterComponent implements OnInit {
       // Guardar locamente data
       // this.carService.addCar(car);
     }
-  }
-}
-
-export function ValidateIdCar(): ValidatorFn
-{
-  return (control: AbstractControl) : ValidationErrors | null => {
-    const code = /^\d{4}$/;
-
-    if (code.test(control.value))
+    else
     {
-      return null;
+      Swal.fire({
+        title: "Mensaje",
+        text: "Ingrese todos los campos requeridos para continuar!",
+        icon: 'error'
+      })
     }
-
-    return {'codeValidate': true};
   }
 }
+
+// export function ValidateIdCar(): ValidatorFn
+// {
+//   return (control: AbstractControl) : ValidationErrors | null => {
+//     const code = /^\d{4}$/;
+//
+//     if (code.test(control.value))
+//     {
+//       return null;
+//     }
+//
+//     return {'codeValidate': true};
+//   }
+// }

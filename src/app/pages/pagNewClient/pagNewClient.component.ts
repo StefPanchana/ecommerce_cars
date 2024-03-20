@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import {ValidateIdCar} from "../pagCarRegister/pagCarRegister.component";
 import * as sweetalert2 from "sweetalert2";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
@@ -23,8 +22,8 @@ export class PagNewClientComponent implements OnInit {
               private clientService: ClientService) {
 
     this.formClient = this.formBuilder.group({
-      "name": [],
-      "lastname": [],
+      "name": ['', Validators.required],
+      "lastname": ['', Validators.required],
       "password": [],
       "email": [],
       "phone": []

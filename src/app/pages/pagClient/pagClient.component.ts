@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ClientService} from "../../services/client.service";
 import Swal from "sweetalert2";
@@ -21,8 +21,8 @@ export class PagClientComponent implements OnInit {
               private route: Router) {
 
     this.formClient = this.formBuilder.group({
-      "name": ['', []],
-      "lastname": [],
+      "name": ['', Validators.required],
+      "lastname": ['', Validators.required],
       "phonenumber": [],
       "email": []
     });

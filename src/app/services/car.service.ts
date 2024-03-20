@@ -4,6 +4,7 @@ import {Observable, map, pipe} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Vehiculo} from "../dto/vehiculo";
 import Swal from "sweetalert2";
+import { ResponseForHttp } from '../utils/interfaces/ResponseForHttp';
 
 @Injectable({
   providedIn: 'root'
@@ -121,10 +122,4 @@ private carList: Array<Car> = [
   {id: 4, code: "AAA004", brand: "toyota", model: "cross", year: 2023, colour: "azul", price: 29000, kilometers: 10000, rating: 5, imgUrl: "assets/carsImages/cross.webp" },
   {id: 5, code: "AAA005", brand: "kia", model: "niro", year: 2023, colour: "azul", price: 30000, kilometers: 8000, rating: 4, imgUrl: "assets/carsImages/niro.jpg" }
 ]
-}
-
-export interface ResponseForHttp {
-  codigo: string;
-  mensaje: string;
-  data: any;
 }

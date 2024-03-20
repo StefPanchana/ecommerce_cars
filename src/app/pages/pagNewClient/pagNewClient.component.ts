@@ -5,6 +5,7 @@ import * as sweetalert2 from "sweetalert2";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
 import {Client} from "../../dto/client";
+import { ClientService } from '../../services/client.service';
 
 @Component({
   selector: 'app-pagNewClient',
@@ -17,14 +18,13 @@ export class PagNewClientComponent implements OnInit {
   titlePag = "Registro del Cliente";
   stateContact = false;
 
-  Client;
-
   constructor(private formBuilder: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private clientService: ClientService) {
 
     this.formClient = this.formBuilder.group({
-      "id": [],
       "name": [],
+      "lastname": [],
       "password": [],
       "email": [],
       "phone": []
@@ -37,16 +37,37 @@ export class PagNewClientComponent implements OnInit {
   }
 
   recordClient() {
-    // Swal.fire({
-    //   title: "Mensaje",
-    //   text: "Se grabo con exito",
-    //   icon: 'info'
-    // })
 
-    alert("Cliente grabado con éxito");
+    let client:Client = {...this.formClient.value};
+
+    if (this.formClient.valid)
+    {
+      this.clientService.insertClient(client).subscribe(info => {
+
+        if (parseInt(info.codigo) === 1)
+          {
+            Swal.fire({
+              title: "Mensaje",
+              text: "Se grabo nuevo cliente con exito",
+              icon: 'info'
+            })
+
+            // Paso a la pagina principal luego de agregar item nuevo
+            this.router.navigate(['/cars']);
+          }
+          else
+          {
+            Swal.fire({
+              title: "Mensaje",
+              text: "Se grabo nuevo cliente con exito" + info.mensaje,
+              icon: 'info'
+            })
+          }
+      });
+    }
 
     // Activar ruta del listado de autos
-    this.router.navigate(['/cars']);
+    this.router.navigate(['/home']);
   }
 
   changeStateContact() {

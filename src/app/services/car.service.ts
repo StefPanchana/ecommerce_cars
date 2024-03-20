@@ -88,6 +88,22 @@ insertCar(car: Car){
   return this.http.post<ResponseForHttp>(this.baseUrl+"vehiculo/", newCar, httpOptions);
 }
 
+updateCar(id: string|undefined, car: Car){
+
+  let data : Vehiculo = {
+    codigo: car.code,
+    marca: car.brand,
+    modelo: car.model,
+    anio: car.year,
+    kilometraje: car.kilometers,
+    precio: car.price,
+    calificacion: car.rating,
+    foto: car.imgUrl
+  }
+
+  return this.http.put<ResponseForHttp>(this.baseUrl+"vehiculo/"+id, data);
+}
+
 findCar(id: string)
 {
   return this.http.get<ResponseForHttp>(this.baseUrl+"vehiculo/"+id);

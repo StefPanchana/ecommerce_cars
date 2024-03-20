@@ -7,14 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class UserInterceptorService implements HttpInterceptor{
 
-username: string = "stef.panchana";
-password: string = "user-request";
+user: string = "stef.panchana";
+parameter: string = "user-request";
 
 constructor() { }
 
 intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
   let cloneHttp = req.clone({
-    headers: req.headers.append(this.username, this.password)
+    headers: req.headers.append(this.parameter, this.user)
   });
   return next.handle(cloneHttp);
 }

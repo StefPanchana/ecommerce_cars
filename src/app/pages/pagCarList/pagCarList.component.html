@@ -62,8 +62,8 @@
               <td><app-rating [rating]="item.rating" (actionPulse)="receive($event)"></app-rating></td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic Example">
-                  <button type="button" class="btn btn-info" (click)="editCarSelected()">Edit</button>
-                  <button type="button" class="btn btn-warning" (click)="deleteCarSelected()">Delete</button>
+                  <button type="button" class="btn btn-info" (click)="editCarSelected($event, item.code)">Edit</button>
+                  <button type="button" class="btn btn-warning" (click)="deleteCarSelected($event, item.code)">Delete</button>
                 </div>
               </td>
           </tr>

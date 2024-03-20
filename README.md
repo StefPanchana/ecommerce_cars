@@ -1,4 +1,13 @@
+# ##############################################################################################################
 # EcommerceCars
+# ##############################################################################################################
+Proyecto Angular de Comercio Electronico de Autos, con llamadas a una API publica para CRUD de autos y clientes.
+
+Author: Stefania Panchana
+Correo: stefaniapanchanaj@hotmail.com
+
+# ##############################################################################################################
+# ##############################################################################################################
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.1.
 

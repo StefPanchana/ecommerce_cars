@@ -29,7 +29,7 @@ export class PagCarRegisterComponent implements OnInit {
       "price": [],
       "kilometers": [],
       "rating": [],
-      "imgurl": []
+      "imgUrl": []
     });
    }
 
@@ -66,6 +66,8 @@ export class PagCarRegisterComponent implements OnInit {
         }
 
       });
+
+      this.formCar.controls['code'].disable();
     }
   }
 

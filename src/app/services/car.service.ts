@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../dto/car';
 import {Observable, map, pipe} from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Vehiculo} from "../dto/vehiculo";
 import Swal from "sweetalert2";
 import { ResponseForHttp } from '../utils/interfaces/ResponseForHttp';
@@ -17,32 +17,40 @@ constructor(private http: HttpClient) {
 
 }
 
-getAllCars():Observable<Car[]> {
-  return this.http.get<ResponseForHttp>(this.baseUrl+"vehiculos/").pipe(map(datatry => {
-    console.log(datatry.data);
+getAllCars(filter?: string, rows?: number, page?:number):Observable<ResponseForHttp> {
 
-    let listCar:Array<Car> = [];
-    datatry.data.forEach(element => {
-      listCar.push({
-        id: element.id,
-        code: element.codigo,
-        brand: element.marca,
-        model: element.modelo,
-        year: element.anio,
-        colour: '',
-        kilometers: element.kilometraje,
-        price: element.precio,
-        rating: element.calificacion,
-        imgUrl: element.foto
-      })
-    });
+  let body = new HttpParams();
+  body = filter ? body.set('filtro', filter): body;
+  body = rows ? body.set('rows', rows): body;
+  body = page ? body.set('page', page): body;
 
-    // Actualizo la informacion de la lista de autos
-    this.carList = listCar;
+  return this.http.get<ResponseForHttp>(this.baseUrl+"vehiculos/", {params: body});
 
-    // Retorno la lista de autos actualizada
-    return this.carList;
-  }));
+  //   .pipe(map(datatry => {
+  //   console.log(datatry.data);
+  //
+  //   // let listCar:Array<Car> = [];
+  //   // datatry.data.forEach(element => {
+  //   //   listCar.push({
+  //   //     id: element.id,
+  //   //     code: element.codigo,
+  //   //     brand: element.marca,
+  //   //     model: element.modelo,
+  //   //     year: element.anio,
+  //   //     colour: '',
+  //   //     kilometers: element.kilometraje,
+  //   //     price: element.precio,
+  //   //     rating: element.calificacion,
+  //   //     imgUrl: element.foto
+  //   //   })
+  //   // });
+  //
+  //   // // Actualizo la informacion de la lista de autos
+  //   // this.carList = listCar;
+  //   //
+  //   // // Retorno la lista de autos actualizada
+  //   // return this.carList;
+  // }));
 }
 
 getCars(filter: any): Observable<Array<Car>>{

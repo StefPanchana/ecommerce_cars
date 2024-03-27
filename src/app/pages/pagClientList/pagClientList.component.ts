@@ -48,7 +48,7 @@ export class PagClientListComponent implements OnInit {
           password: '',
           lastname: element.apellido,
           email: element.email,
-          phoneNumber: element.telefono
+          phonenumber: element.telefono
         })
       });
 

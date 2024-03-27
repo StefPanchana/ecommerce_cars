@@ -4,14 +4,14 @@ export class Client {
   lastname: string;
   email: string;
   password: string;
-  phoneNumber: string;
+  phonenumber: string;
 
-  constructor(id: string, name: string, lastname: string, email: string, password: string, phoneNumber: string) {
+  constructor(id: string, name: string, lastname: string, email: string, password: string, phonenumber: string) {
     this.id = id;
     this.name = name;
     this.lastname = lastname;
     this.email = email;
     this.password = password;
-    this.phoneNumber = phoneNumber;
+    this.phonenumber = phonenumber;
   }
 }

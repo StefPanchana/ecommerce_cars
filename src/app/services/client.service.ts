@@ -34,8 +34,9 @@ insertClient(client: Client){
   let newClient: Cliente = {
     nombre: client.name,
     apellido: client.lastname,
-    telefono: parseInt(client.phoneNumber),
-    email: client.email
+    telefono: client.phonenumber,
+    email: client.email,
+    password: client.password
   };
 
   return this.http.post<ResponseForHttp>(this.baseUrl+"cliente/", newClient, httpOptions);
@@ -50,8 +51,9 @@ updateClient(id: string|undefined, client: Client){
       id: parseInt(client.id),
       nombre: client.name,
       apellido: client.lastname,
-      telefono: parseInt(client.phoneNumber),
-      email: client.email
+      telefono: client.phonenumber,
+      email: client.email,
+      password: client.password
     }
     return this.http.put<ResponseForHttp>(this.baseUrl+"cliente/"+id, data);
   }

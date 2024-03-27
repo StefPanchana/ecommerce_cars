@@ -40,7 +40,8 @@ export class PagClientComponent implements OnInit {
           name: info.data.nombre,
           lastname: info.data.apellido,
           phonenumber: info.data.telefono,
-          email: info.data.email
+          email: info.data.email,
+          password: info.data.password
         });
       }
       else if (parseInt(info.codigo) !== 1){

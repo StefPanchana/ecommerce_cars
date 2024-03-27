@@ -3,7 +3,7 @@
 # ##############################################################################################################
 Proyecto Angular de Comercio Electronico de Autos, con llamadas a una API publica para CRUD de autos y clientes.
 
-Author: Stefania Panchana
+Author: Gloria Stefania Panchana Jaramillo
 ##
 Correo: stefaniapanchanaj@hotmail.com
 
